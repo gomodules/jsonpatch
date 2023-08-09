@@ -19,8 +19,8 @@ func BenchmarkCreatePatch(b *testing.B) {
 		},
 		{
 			"large array",
-			largeArray(1000),
-			largeArray(1000),
+			largeArray(1000, "a"),
+			largeArray(1000, "b"),
 		},
 		{
 			"simple",
@@ -40,7 +40,7 @@ func BenchmarkCreatePatch(b *testing.B) {
 	}
 }
 
-func largeArray(size int) string {
+func largeArray(size int, val string) string {
 	type nested struct {
 		A, B string
 	}
@@ -49,7 +49,7 @@ func largeArray(size int) string {
 	}
 	a := example{}
 	for i := 0; i < size; i++ {
-		a.Objects = append(a.Objects, nested{A: "a", B: "b"})
+		a.Objects = append(a.Objects, nested{A: "a", B: val})
 	}
 	res, _ := json.Marshal(a)
 	return string(res)
