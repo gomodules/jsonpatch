@@ -16,6 +16,7 @@ var simpleD = `{"a":100, "b":200, "c":"hello", "d":"foo"}`
 var simpleE = `{"a":100, "b":200}`
 var simplef = `{"a":100, "b":100, "d":"foo"}`
 var simpleG = `{"a":100, "b":null, "d":"foo"}`
+var simpleH = `{"a":100, "b":200, "c":"hello", "d": 9223372036854775500}`
 var empty = `{}`
 
 var arraySrc = `
@@ -859,6 +860,7 @@ func TestCreatePatch(t *testing.T) {
 		{"Simple:OneAdd", simpleA, simpleD},
 		{"Simple:OneRemove", simpleA, simpleE},
 		{"Simple:VsEmpty", simpleA, empty},
+		{"Simple:AddBigInt", simpleA, simpleH},
 		// array types
 		{"Array:Same", arraySrc, arraySrc},
 		{"Array:BoolReplace", arraySrc, arrayDst},
