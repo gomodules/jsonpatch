@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"testing"
 
-	jp "github.com/evanphx/json-patch"
 	"github.com/stretchr/testify/assert"
 	"gomodules.xyz/jsonpatch/v2"
+	jp "gopkg.in/evanphx/json-patch.v4"
 )
 
 func FuzzCreatePatch(f *testing.F) {
